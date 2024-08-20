@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     cursor: 'pointer',
   },
   buttonText: {
-    color: Color.text,
+    color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
   },

@@ -1,6 +1,5 @@
 import React from 'react';
-import FlexCard from './components/FlexCard';
-import GetCountry from './components/GetCountry';
+import GetCountry from './src/components/GetCountry';
 
 const App = (): JSX.Element => {
   return <GetCountry />;

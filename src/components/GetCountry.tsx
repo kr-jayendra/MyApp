@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import getAllCountry, {getCountryName} from '../utils/utils';
 import {
-  Button,
   Image,
   Linking,
   ScrollView,
@@ -13,6 +12,7 @@ import {
 } from 'react-native';
 import {createShimmerPlaceholder} from 'react-native-shimmer-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
+import {Color,theme} from '../theme/theme';
 
 const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
 
@@ -154,7 +154,7 @@ const CountryLoader = () => {
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
-    backgroundColor: 'white',
+    backgroundColor: Color.background,
     padding: 15,
     paddingTop: 20,
     gap: 15,
@@ -163,7 +163,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
-    //   padding: 10,
   },
   countryInfoContainer: {
     display: 'flex',
@@ -182,15 +181,13 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: '#ccc',
+    borderColor: Color.inputBorder,
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
-    backgroundColor: '#fff',
     width: '70%',
   },
   buttonContainer: {
-    // backgroundColor: '#504ec3', // You can only style the container, not the button directly
     borderRadius: 10,
   },
   button: {
@@ -204,18 +201,21 @@ const styles = StyleSheet.create({
     cursor: 'pointer',
   },
   buttonText: {
-    color: '#fff',
+    color: Color.text,
     fontSize: 16,
     fontWeight: 'bold',
   },
   countryContainer: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: Color.background,
+    color: Color.text,
     elevation: 5,
     shadowOffset: {
       width: 1,
       height: 1,
     },
+    // borderWidth: 1,
+    // borderColor: theme == 'dark' && Color.border,
     borderRadius: 10,
     gap: 10,
     width: 350,
@@ -238,26 +238,33 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 16,
+    color: Color.text,
     fontWeight: 'bold',
   },
   countryName: {
     fontSize: 20,
+    color: Color.text,
     fontWeight: 'bold',
   },
   countryCapital: {
     fontSize: 16,
+    color: Color.text,
   },
   countryRegion: {
     fontSize: 16,
+    color: Color.text,
   },
   countryPopulation: {
     fontSize: 16,
+    color: Color.text,
   },
   countryArea: {
     fontSize: 16,
+    color: Color.text,
   },
   countryTimezones: {
     fontSize: 16,
+    color: Color.text,
   },
   mapLink: {
     fontSize: 16,

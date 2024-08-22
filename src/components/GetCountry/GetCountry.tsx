@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import getAllCountry, {getCountryName} from '../utils/utils';
+import getAllCountry, {getCountryName} from '../../utils/utils';
 import {
+  FlatList,
   Image,
   Linking,
+  ListRenderItem,
   ScrollView,
   StyleSheet,
   Text,
@@ -12,12 +14,13 @@ import {
 } from 'react-native';
 import {createShimmerPlaceholder} from 'react-native-shimmer-placeholder';
 import LinearGradient from 'react-native-linear-gradient';
-import {Color,theme} from '../theme/theme';
+import {Color, theme} from '../../theme/theme';
+import {countryType} from '../../types';
 
 const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
 
-const GetCountry = () => {
-  const [countryData, setCountryData] = useState<any>([]);
+const GetCountry = (): JSX.Element => {
+  const [countryData, setCountryData] = useState<[countryType] | []>([]);
   const [countryName, setCountryName] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -101,6 +104,56 @@ const GetCountry = () => {
                   </View>
                 );
               })}
+
+            {/* {countryData?.length > 0 && (
+              <>
+                <FlatList
+                  numColumns={1}
+                  data={countryData}
+                  style={styles.countryInfoContainer}
+                  keyExtractor={(country: countryType) => country.name}
+                  renderItem={({country}: any): JSX.Element => (
+                    <>
+                      {country ? (
+                        <View style={styles.countryContainer}>
+                          <Image
+                            source={{uri: country?.flag}}
+                            style={styles.countryFlag}
+                          />
+                          <View style={styles.countryDetails}>
+                            <Text style={styles.countryName}>
+                              {country.name}
+                            </Text>
+                            <Text style={styles.countryCapital}>
+                              <Text style={styles.heading}>Capital: </Text>
+                              {country.capital}
+                            </Text>
+                            <Text style={styles.countryRegion}>
+                              <Text style={styles.heading}>Region: </Text>
+                              {country.region}
+                            </Text>
+                            <Text style={styles.countryPopulation}>
+                              <Text style={styles.heading}>Population: </Text>
+                              {country.population}
+                            </Text>
+                            <Text style={styles.countryArea}>
+                              <Text style={styles.heading}>Area: </Text>
+                              {country.area} km{'\u00B2'}
+                            </Text>
+                            <TouchableOpacity
+                              onPress={() => Linking.openURL(country.map)}>
+                              <Text style={styles.mapLink}>Location</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </View>
+                      ) : (
+                        <CountryLoader />
+                      )}
+                    </>
+                  )}
+                />
+              </>
+            )} */}
 
             {countryData?.length === 0 && (
               <Text style={styles.noCountryFound}>No country found</Text>

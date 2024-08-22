@@ -1,21 +1,25 @@
 async function getAllCountry() {
-  const response = await fetch('https://restcountries.com/v3.1/all');
-  const data = await response.json();
+  try {
+    const response = await fetch('https://restcountries.com/v3.1/all');
+    const data = await response.json();
 
-  const countryData = data.map((country: any) => {
-    return {
-      name: country.name.common,
-      flag: country.flags.png,
-      capital: country.capital,
-      region: country.region,
-      population: country.population,
-      area: country.area,
-      timezones: country.timezones[0],
-      latlong: country.latlng,
-      map: country.maps.googleMaps,
-    };
-  });
-  return countryData;
+    const countryData = data.map((country: any) => {
+      return {
+        name: country.name.common,
+        flag: country.flags.png,
+        capital: country.capital,
+        region: country.region,
+        population: country.population,
+        area: country.area,
+        timezones: country.timezones[0],
+        latlong: country.latlng,
+        map: country.maps.googleMaps,
+      };
+    });
+    return countryData;
+  } catch (error) {
+    return [];
+  }
 }
 
 async function getCountryName(countryName: string) {
